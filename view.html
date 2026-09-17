@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운동 기록 상세보기</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+        crossorigin="anonymous"
+    >
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+</head>
+<body>
+
+<div class="container mt-5" style="max-width: 500px;">
+
+    <h2 class="mb-4">🏋️ 운동 기록 상세보기</h2>
+
+    <!-- Bootstrap card 1개로 데이터 표시 -->
+    <div class="card">
+
+        <!-- card-body: 데이터를 p 태그로 단순 나열 (JS가 채워줌) -->
+        <div class="card-body" id="detail"></div>
+
+        <!-- card-footer: Edit / Delete 버튼 2개만 -->
+        <div class="card-footer d-flex gap-2">
+            <!-- Edit 버튼 → edit.html로 이동 -->
+            <a href="edit.html" class="btn btn-warning">
+                <i class="bi bi-pencil"></i> Edit
+            </a>
+            <!-- Delete 버튼 → confirm 후 index.html로 이동 -->
+            <button class="btn btn-danger" onclick="deleteRecord()">
+                <i class="bi bi-trash"></i> Delete
+            </button>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+    // ===== 하드코딩된 단일 레코드 (실제 서비스에서는 URL 파라미터로 ID를 받아 조회) =====
+    const workout = {
+        id:        1,
+        date:      "2025-06-01",
+        sport:     "러닝",
+        time:      40,
+        cal:       350,
+        intensity: "보통",
+        memo:      "한강공원",
+        done:      true
+    };
+    // ===== 하드코딩 끝 =====
+
+    // id="detail" 인 card-body 안에 모든 필드를 p 태그로 채워 넣기
+    // 템플릿 리터럴(``) 안에서 ${변수} 로 값을 삽입
+    document.getElementById("detail").innerHTML = `
+        <p><strong>번호</strong>: ${workout.id}</p>
+        <p><strong>날짜</strong>: ${workout.date}</p>
+        <p><strong>종목</strong>: ${workout.sport}</p>
+        <p><strong>운동시간</strong>: ${workout.time}분</p>
+        <p><strong>칼로리</strong>: ${workout.cal} kcal</p>
+        <p><strong>강도</strong>: ${workout.intensity}</p>
+        <p><strong>메모</strong>: ${workout.memo}</p>
+        <p><strong>달성여부</strong>: ${workout.done ? "✅ 완료" : "❌ 미완료"}</p>
+    `;
+    // workout.done ? "✅ 완료" : "❌ 미완료"  →  삼항 연산자: done이 true면 완료, false면 미완료
+
+    // Delete 버튼 클릭 시 실행되는 함수
+    function deleteRecord() {
+        // confirm(): 확인/취소 다이얼로그, 확인 클릭 시 true 반환
+        const ok = confirm("이 운동 기록을 삭제하시겠습니까?");
+        if (ok) {
+            window.location.href = "index.html"; // 목록으로 이동
+        }
+    }
+
+</script>
+
+</body>
+</html>
