@@ -1,0 +1,227 @@
+/* =============================================
+   Night Mode Theme
+   깔끔한 다크 모드 — 원목 없음
+   Bootstrap override (body 수정 없음)
+   ============================================= */
+
+/* --- 색상 팔레트 ---
+   --bg-base    : 페이지 배경 (가장 어두운 레이어)
+   --bg-surface : 카드 / 테이블 배경
+   --bg-input   : input / select 배경
+   --accent     : 포인트 컬러 (블루 계열)
+   --accent-dim : hover / active 시 accent 어둡게
+   --border     : 테두리
+   --text-main  : 기본 텍스트
+   --text-muted : 보조 텍스트
+*/
+:root {
+    --bg-base    : #0F1117;
+    --bg-surface : #1A1D27;
+    --bg-input   : #22263A;
+    --accent     : #5B8CFF;
+    --accent-dim : #3A6AE0;
+    --border     : #2E3248;
+    --text-main  : #E2E8F0;
+    --text-muted : #6B7280;
+}
+
+/* --- 전체 배경 & 텍스트 --- */
+body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* --- h2 제목 --- */
+h2 {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+/* =============================================
+   테이블
+   ============================================= */
+
+.table {
+    --bs-table-bg: var(--bg-surface);
+    --bs-table-color: var(--text-main);
+    --bs-table-border-color: var(--border);
+}
+
+/* 헤더 */
+.table-dark {
+    --bs-table-bg: #111420;
+    --bs-table-color: var(--text-muted);
+    --bs-table-border-color: var(--border);
+}
+
+/* 홀수 행 줄무늬 */
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+    --bs-table-accent-bg: #1E2235;
+    color: var(--text-main);
+}
+
+/* hover 행 */
+.table-hover > tbody > tr:hover > * {
+    --bs-table-accent-bg: #252A42;
+    color: var(--text-main);
+}
+
+/* 테이블 링크 */
+.table a {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+}
+.table a:hover {
+    color: #88AAFF;
+    text-decoration: underline;
+}
+
+/* =============================================
+   뱃지
+   ============================================= */
+
+/* 완료 */
+.badge.bg-success {
+    background-color: #1A3D5C !important;
+    color: #60C0F0 !important;
+}
+
+/* 미완료 */
+.badge.bg-secondary {
+    background-color: #2A2D3E !important;
+    color: var(--text-muted) !important;
+}
+
+/* =============================================
+   버튼
+   ============================================= */
+
+/* Primary */
+.btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    font-weight: 600;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--accent-dim);
+    border-color: var(--accent-dim);
+    color: #fff;
+}
+
+/* Warning → Edit 버튼 */
+.btn-warning {
+    background-color: #3A4060;
+    border-color: #3A4060;
+    color: var(--text-main);
+    font-weight: 600;
+}
+.btn-warning:hover,
+.btn-warning:focus {
+    background-color: #4A5280;
+    border-color: #4A5280;
+    color: #fff;
+}
+
+/* Secondary → 취소 버튼 */
+.btn-secondary {
+    background-color: var(--bg-input);
+    border-color: var(--border);
+    color: var(--text-muted);
+}
+.btn-secondary:hover,
+.btn-secondary:focus {
+    background-color: var(--border);
+    border-color: var(--border);
+    color: var(--text-main);
+}
+
+/* Danger → Delete 버튼 */
+.btn-danger {
+    background-color: #3D1A1A;
+    border-color: #3D1A1A;
+    color: #FF8080;
+}
+.btn-danger:hover {
+    background-color: #5C2222;
+    border-color: #5C2222;
+    color: #fff;
+}
+
+/* =============================================
+   카드 (view.html)
+   ============================================= */
+
+.card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    color: var(--text-main);
+}
+
+.card-footer {
+    background-color: #111420;
+    border-top: 1px solid var(--border);
+}
+
+/* =============================================
+   폼 (add.html, edit.html)
+   ============================================= */
+
+.form-control,
+.form-select {
+    background-color: var(--bg-input);
+    border-color: var(--border);
+    color: var(--text-main);
+}
+.form-control:focus,
+.form-select:focus {
+    background-color: var(--bg-input);
+    border-color: var(--accent);
+    color: var(--text-main);
+    box-shadow: 0 0 0 0.2rem rgba(91, 140, 255, 0.25);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-select option {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+}
+
+.form-label {
+    color: var(--text-main);
+}
+
+/* 체크박스 */
+.form-check-input {
+    background-color: var(--bg-input);
+    border-color: var(--border);
+}
+.form-check-input:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+.form-check-label {
+    color: var(--text-muted);
+}
+
+/* =============================================
+   기타
+   ============================================= */
+
+/* 필수 * 표시 */
+.text-danger {
+    color: #FF6B6B !important;
+}
+
+/* container 하단 여백 */
+.container {
+    padding-bottom: 60px;
+}
